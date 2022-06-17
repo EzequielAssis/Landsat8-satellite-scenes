@@ -1,10 +1,10 @@
 # Landsat8-satellite-scenes
-### Se você está buscando acessar cenas do landsat 8 de forma automatizada, o código acima pode te ajudar.
+### If you are looking to access landsat 8 scenes in an automated way, the code above can help you.
 
-O código foi desenvolvido para solicitar especificamente indices de NDVI, mas pode ser alterado para buscar outras bandas especificas. O fluxo principal do código é o seguinte:
-* Ler um shapefile da região de interesse e extrair seus limites (os mínimos e maximos de longitude e latitude).
-* Acessar a [API da EROS](https://m2m.cr.usgs.gov/) e usar os limites do shapefile para descrever o Minimum bounding rectangle (MBR) e buscar todas as cenas que cobrem a região em um intervalo de tempo especificado. Há um loop nessa parte que foi usado para percorrer a região ao longo dos anos e encontrar a combinação de cenas com a menor cobertura de nuvem, mas o loop pode ser removido.
-* A lista de cenas é passada para a [API da ESPA](https://espa.cr.usgs.gov/) que fará a requisição das cenas. A API da EROS também gera ordens de Download de cenas, mas a API da ESPA entrega indices espectrais (NDVI, EVI...).
-* Quando todas as cenas forem processadas, o download poderá ser efetuado utilizando o script disponibilizado pela própria ESPA. Após o download de todas as cenas. O arquivo .tiff que contém a banda NDVI é extraído de cada cena baixada
+The code is designed to specifically request NDVI indices, but can be changed to look for other specific bands. The main flow of the code is as follows:
+* Read a shapefile of the region of interest and extract its boundaries (the minimum and maximum of longitude and latitude).
+* Access the [EROS API](https://m2m.cr.usgs.gov/) and use the shapefile boundaries to describe the Minimum bounding rectangle (MBR) and fetch all the scenes that cover the region in a time interval specified. There is a loop in this part that has been used to traverse the region over the years and find the combination of scenes with the least cloud cover, but the loop can be removed..
+* The scene list is passed to the [ESPA API](https://espa.cr.usgs.gov/) which will request the scenes. The EROS API also generates Scene Download orders, but the ESPA API delivers spectral indices (NDVI, EVI...).
+* When all the scenes are processed, the download can be done using the script made available by ESPA itself. After all scenes are downloaded, the .tiff file containing the NDVI band is extracted from each downloaded scene.
 
-Para ter acesso a API da EROS e da ESPA, é necessário [criar uma conta na USGS](https://ers.cr.usgs.gov/register).
+To access the EROS and ESPA API, [create a USGS account](https://ers.cr.usgs.gov/register) is required.
